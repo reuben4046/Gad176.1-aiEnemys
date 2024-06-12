@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    Rigidbody2D body;
+    Rigidbody body;
 
     private float horizontal;
     private float vertical;
@@ -19,23 +19,50 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        if (Input.GetKey(KeyCode.W))
+        {
+            MoveForwards();
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            MoveBackwards();
+        }
+        if(Input.GetKey(KeyCode.A))
+        {
+            MoveLeft();
+        }
+        if ( Input.GetKey(KeyCode.D))
+        {
+            MoveRight();
+        }
+
     }
 
-    private void FixedUpdate()
+    void MoveForwards()
     {
-        if (horizontal != 0 && vertical != 0)
-        {
-            horizontal *= moveLimiter;
-            vertical *= moveLimiter;
-        }
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        transform.position += Vector3.fwd * runSpeed * Time.deltaTime;
     }
+
+    void MoveBackwards()
+    {
+        transform.position += Vector3.back * runSpeed * Time.deltaTime;
+    }
+
+    void MoveLeft()
+    {
+        transform.position += Vector3.left * runSpeed * Time.deltaTime;
+    }
+
+    void MoveRight()
+    {
+        transform.position += Vector3.right * runSpeed * Time.deltaTime;
+    }
+
 }
+    
