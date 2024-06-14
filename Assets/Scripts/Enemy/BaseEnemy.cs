@@ -14,7 +14,7 @@ public class BaseEnemy : MonoBehaviour
         RotateTowardsTarget();
     }
 
-    void RotateTowardsTarget()
+    protected void RotateTowardsTarget()
     {
         Vector3 targetDirection;
 
@@ -24,5 +24,10 @@ public class BaseEnemy : MonoBehaviour
         Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, turnStep, 0);
 
         transform.rotation = Quaternion.LookRotation(newDirection);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        
     }
 }

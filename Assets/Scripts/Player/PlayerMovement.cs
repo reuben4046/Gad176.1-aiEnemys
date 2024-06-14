@@ -7,14 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody body;
 
-    private float horizontal;
-    private float vertical;
-
-    private float forward;
-
-    private float moveLimiter = 0.7f;
-
-    public float runSpeed = 20.0f;
+    [SerializeField] private float runSpeed = 10.0f;
 
     // Start is called before the first frame update
     void Start()
