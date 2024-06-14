@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveForwards()
     {
-        transform.position += Vector3.fwd * runSpeed * Time.deltaTime;
+        transform.position += Vector3.forward * runSpeed * Time.deltaTime;
     }
 
     void MoveBackwards()

@@ -6,14 +6,7 @@ public class BaseEnemy : MonoBehaviour
 {
     public PlayerMovement player;
 
-    private float turnSpeed = 0.5f;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private float turnSpeed = 1.5f;
 
     // Update is called once per frame
     void Update()
