@@ -10,20 +10,16 @@ public class Shooting : MonoBehaviour
     private Vector3 mousePosition;
 
     public GameObject bulletPrefab;
+
     public Transform bulletSpawnPoint;
     public bool canFire;
-    public float timer;
+    private float timer;
     public float timeBetweenFiring = 0.5f;
-
-
+    
     private float aimSpeed = 10f;
 
-    void Start()
-    {
-        
-    }
 
-    private void Update() 
+    void Update() 
     {
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
@@ -41,9 +37,14 @@ public class Shooting : MonoBehaviour
 
         if(Input.GetMouseButtonDown(0) && canFire)
         {
-            canFire = false;
-            Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+            BulletInstantiator();
         }
+    }
+
+    private void BulletInstantiator()
+    {
+        canFire = false;
+        Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
     }
 
     void RotateTowardsTarget()

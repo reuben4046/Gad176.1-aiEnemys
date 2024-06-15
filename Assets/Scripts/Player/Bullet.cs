@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f;
-    public float damage = 10f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float damage = 10f;
 
-    private void Update()
+    private float timer;
+    
+    void Update()
     {
         // Move the bullet forward
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -22,8 +25,25 @@ public class Bullet : MonoBehaviour
         {
             // Deal damage to the enemy
             enemy.TakeDamage(damage);
-            // Destroy the bullet
-            Destroy(gameObject);
         }
+        BaseEnemy[] enemies = GetComponentsInChildren<BaseEnemy>();
+        foreach (BaseEnemy childEnemy in enemies)
+        {
+            childEnemy.TakeDamage(damage);
+        }
+
+        Destroy(gameObject);
+    }
+
+    void Start()
+    {
+        StartCoroutine(DestroyBullet());
+    }
+    IEnumerator DestroyBullet()
+    {
+        Debug.Log("coroutine start");
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
+        Debug.Log("coroutine end");
     }
 }
