@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
 
-public class MovingEnemy : BaseEnemy
+public class FastMovingEnemy : MovingEnemy
 {
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
     // Update is called once per frame
     void Update()
@@ -13,11 +17,9 @@ public class MovingEnemy : BaseEnemy
         MoveTowardsPlayer();
     }
 
-    protected float moveSpeed = 1f;
-
-    protected virtual void MoveTowardsPlayer()
+    protected override void MoveTowardsPlayer()
     {
-        var step = moveSpeed * Time.deltaTime;
+        var step = moveSpeed * 2f * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
     }
 }

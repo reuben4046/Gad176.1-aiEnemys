@@ -23,7 +23,7 @@ public class Shooting : MonoBehaviour
     {
         mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        RotateTowardsTarget();
+        RotateTowardsMousePos();
 
         if (canFire == false)
         {
@@ -47,7 +47,7 @@ public class Shooting : MonoBehaviour
         Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
     }
 
-    void RotateTowardsTarget()
+    void RotateTowardsMousePos()
     {
         Vector3 targetDirection;
         targetDirection = mousePosition - transform.position;

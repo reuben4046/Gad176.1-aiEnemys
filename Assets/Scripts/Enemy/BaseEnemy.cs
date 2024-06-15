@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
@@ -7,6 +8,15 @@ public class BaseEnemy : MonoBehaviour
     public PlayerMovement player;
 
     private float turnSpeed = 1.5f;
+
+    private float health = 100f;
+    private float damage = 25f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,8 +36,13 @@ public class BaseEnemy : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDirection);
     }
 
-    public void TakeDamage(float damage)
+    
+    public void TakeDamage()
     {
-        
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

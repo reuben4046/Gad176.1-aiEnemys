@@ -24,12 +24,12 @@ public class Bullet : MonoBehaviour
         if (enemy != null)
         {
             // Deal damage to the enemy
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage();
         }
         BaseEnemy[] enemies = GetComponentsInChildren<BaseEnemy>();
         foreach (BaseEnemy childEnemy in enemies)
         {
-            childEnemy.TakeDamage(damage);
+            childEnemy.TakeDamage();
         }
 
         Destroy(gameObject);
@@ -41,9 +41,7 @@ public class Bullet : MonoBehaviour
     }
     IEnumerator DestroyBullet()
     {
-        Debug.Log("coroutine start");
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
-        Debug.Log("coroutine end");
     }
 }
