@@ -13,11 +13,16 @@ public class Bullet : MonoBehaviour
     
     void Update()
     {
+        MoveBullet();
+    }
+
+    protected void MoveBullet()
+    {
         // Move the bullet forward
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         // Check if the bullet collides with an enemy
         BaseEnemy enemy = other.gameObject.GetComponent<BaseEnemy>();
@@ -39,9 +44,10 @@ public class Bullet : MonoBehaviour
     {
         StartCoroutine(DestroyBullet());
     }
-    IEnumerator DestroyBullet()
+    protected IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
+    
 }

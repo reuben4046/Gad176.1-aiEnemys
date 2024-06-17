@@ -57,5 +57,10 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.right * runSpeed * Time.deltaTime;
     }
 
+    public void TakeDamage()
+    {
+        Debug.Log("I took damage!");
+    }
+
 }
     

@@ -17,9 +17,12 @@ public class FastMovingEnemy : MovingEnemy
         MoveTowardsPlayer();
     }
 
+    private float speedMultiplier = 4f;
+
     protected override void MoveTowardsPlayer()
     {
-        var step = moveSpeed * 2f * Time.deltaTime;
+        var step = moveSpeed * speedMultiplier * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
     }
+    
 }
