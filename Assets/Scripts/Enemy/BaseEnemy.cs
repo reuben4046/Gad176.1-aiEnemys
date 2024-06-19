@@ -6,14 +6,14 @@ using UnityEngine;
 public class BaseEnemy : MonoBehaviour
 {
     public PlayerMovement player;
-
-    private float turnSpeed = 1.5f;
+ 
+    [SerializeField] protected float turnSpeed = 1.5f;
 
     private float health = 100f;
     private float damage = 25f;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         player = FindObjectOfType<PlayerMovement>();
     }
@@ -24,7 +24,7 @@ public class BaseEnemy : MonoBehaviour
         RotateTowardsTarget();
     }
 
-    protected void RotateTowardsTarget()
+    protected virtual void RotateTowardsTarget()
     {
         Vector3 targetDirection;
 

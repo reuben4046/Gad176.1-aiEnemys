@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage()
     {
-        Debug.Log("I took damage!");
+        //Debug.Log("I took damage!");
     }
 
 }

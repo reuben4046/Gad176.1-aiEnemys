@@ -7,6 +7,7 @@ using UnityEngine.Animations;
 public class Shooting : MonoBehaviour
 {
     public Camera mainCamera;
+
     private Vector3 mousePosition;
 
     public GameObject bulletPrefab;
