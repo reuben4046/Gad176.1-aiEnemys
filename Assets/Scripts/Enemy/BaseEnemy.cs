@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
-    public PlayerMovement player;
+    protected PlayerMovement player;
  
     [SerializeField] protected float turnSpeed = 1.5f;
 

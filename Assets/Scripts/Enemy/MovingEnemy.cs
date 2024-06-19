@@ -5,7 +5,6 @@ using UnityEngine.Windows.Speech;
 
 public class MovingEnemy : BaseEnemy
 {
-
     // Update is called once per frame
     void Update()
     {

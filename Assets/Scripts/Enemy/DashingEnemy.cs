@@ -14,7 +14,7 @@ public class DashingEnemy : BaseEnemy
     private float dashingTime = 2f;
     
     // Start is called before the first frame update
-    protected virtual void Start()
+    protected override void Start()
     {
         base.Start();
         StartCoroutine(DashCoroutine());
