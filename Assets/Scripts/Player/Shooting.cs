@@ -36,7 +36,7 @@ public class Shooting : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButtonDown(0) && canFire)
+        if(Input.GetMouseButton(0) && canFire)
         {
             BulletInstantiator();
         }

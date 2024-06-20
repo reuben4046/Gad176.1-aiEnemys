@@ -212,7 +212,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.9875, y: 3.9875, z: 3.9875}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 580400253}
@@ -267,6 +267,8 @@ MonoBehaviour:
   fastMovingEnemy: {fileID: 590321447444489101, guid: b5e8b9ad79e8c674f8232ed436701dec, type: 3}
   shootingEnemy: {fileID: 7259686564838270741, guid: 0c3e5be169d35a14bbb5b704ef1e7a39, type: 3}
   dashingEnemy: {fileID: 2377428665283037860, guid: 6371ec6e343426e4fab138231d264378, type: 3}
+  enemyList: []
+  itemToBeRemoved: 0
 --- !u!1 &365262946
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,7 +1233,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1437129821502967603, guid: 17205388fb3e242748bf4bf0cd925563, type: 3}
   bulletSpawnPoint: {fileID: 1236849361}
   canFire: 1
-  timeBetweenFiring: 0.5
+  timeBetweenFiring: 0
 --- !u!4 &1943411233
 Transform:
   m_ObjectHideFlags: 0

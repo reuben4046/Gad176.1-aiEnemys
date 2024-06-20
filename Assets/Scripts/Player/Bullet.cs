@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    // speed and damage of the bullet
     [SerializeField] private float speed = 10f;
     [SerializeField] private float damage = 10f;
 
@@ -16,12 +17,13 @@ public class Bullet : MonoBehaviour
         MoveBullet();
     }
 
+    //function that moves the bullet forward
     protected void MoveBullet()
     {
-        // Move the bullet forward
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 
+    //function that calls a function in the BaseEnemy class that deals damage to the enemy
     protected virtual void OnTriggerEnter(Collider other)
     {
         // Check if the bullet collides with an enemy
@@ -30,20 +32,23 @@ public class Bullet : MonoBehaviour
         {
             // Deal damage to the enemy
             enemy.TakeDamage();
+            Destroy(gameObject);
         }
         BaseEnemy[] enemies = GetComponentsInChildren<BaseEnemy>();
         foreach (BaseEnemy childEnemy in enemies)
         {
             childEnemy.TakeDamage();
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(DestroyBullet());
     }
+
+    //function that destroys the bullet after 5 seconds
     protected IEnumerator DestroyBullet()
     {
         yield return new WaitForSeconds(5f);

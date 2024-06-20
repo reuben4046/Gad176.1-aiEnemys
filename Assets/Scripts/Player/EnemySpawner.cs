@@ -1,19 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
+    
     //list of possible spawn points
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
-
-    private List<BaseEnemy> baseEnemies = new List<BaseEnemy>(); 
-    private List<MovingEnemy> movingEnemies = new List<MovingEnemy>();
-    private List<FastMovingEnemy> fastMovingEnemies = new List<FastMovingEnemy>();
-    private List<ShootingEnemy> shootingEnemies = new List<ShootingEnemy>();
-    private List<DashingEnemy> dashingEnemies = new List<DashingEnemy>();
 
     //public references to all of the enemys
     public BaseEnemy baseEnemy;
@@ -22,77 +17,102 @@ public class EnemySpawner : MonoBehaviour
     public ShootingEnemy shootingEnemy;
     public DashingEnemy dashingEnemy;
 
+    //list of all enemies
+    public List<BaseEnemy> enemyList = new List<BaseEnemy>();
+
+    //how many waves have been spawned
     private int waveNumber = 0;
+
+    //how many enemies to spawn in each wave
+    private int spawnAmmount = 3;
 
     // Update is called once per frame
     void Update()
     {
-        AreEnemysDead();
-    }
-    
-    private void SpawnEnemys()
-    {
-        //if (waveNumber == 1)
-        //{
-        //    foreach (Transform t in spawnPoints)
-        //    {
-        //        BaseEnemy enemy = Instantiate(baseEnemy, t.position, t.rotation);
-        //        enemy.transform.parent = transform;
-        //        baseEnemies.Add(enemy);
-        //    }
-        //}
-        if (waveNumber == 2)
-        {
-            foreach (Transform t in spawnPoints)
-            {
-                MovingEnemy enemy = Instantiate(movingEnemy, t.position, t.rotation);
-                
-                movingEnemies.Add(enemy);
-            }
-        }
-        if (waveNumber == 3)
-        {
-            foreach (Transform t in spawnPoints)
-            {
-                FastMovingEnemy enemy = Instantiate(fastMovingEnemy, t.position, t.rotation);
-                
-                fastMovingEnemies.Add(enemy);
-            }
-        }
-        if (waveNumber == 4)
-        {
-            foreach (Transform t in spawnPoints)
-            {
-                ShootingEnemy enemy = Instantiate(shootingEnemy, t.position, t.rotation);
-                
-                shootingEnemies.Add(enemy);
-            }
-        }
-        if (waveNumber == 5)
-        {
-            foreach (Transform t in spawnPoints)
-            {
-                DashingEnemy enemy = Instantiate(dashingEnemy, t.position, t.rotation);
-                
-                dashingEnemies.Add(enemy);
-            }
-        }
-        
+      WaveIncreaser();
+      Debug.Log(enemyList.Count);
     }
 
-    private void AreEnemysDead()
+    //function that increases the wave number
+    private void WaveIncreaser()
     {
-    
-            if (baseEnemies.Count == 0 && movingEnemies.Count == 0 && fastMovingEnemies.Count == 0 && shootingEnemies.Count == 0 && dashingEnemies.Count == 0)
+        if (enemyList.Count == 0)
         {
             waveNumber++;
-            SpawnEnemys();
+            SpawnController();
         }
-
     }
 
+    //function that controlls which enemies to spawn
+    private void SpawnController()
+    {
+        if (waveNumber == 1)
+        {
+            SpawnMovingEnemy();
+        }
+        else if (waveNumber == 2)
+        {
+            SpawnFastMovingEnemy();
+            SpawnMovingEnemy();
+        }
+        else if (waveNumber == 3)
+        {
+            SpawnShootingEnemy();
+            SpawnMovingEnemy();
+            SpawnFastMovingEnemy();
+        }
+        else if (waveNumber == 4)
+        {
+            SpawnDashingEnemy();
+            SpawnMovingEnemy();
+            SpawnFastMovingEnemy();
+            SpawnShootingEnemy();
+        }
+    }
 
+    //functions that choose a random spawn point and instaciate spawnAmmount of enemies at the chosen points
+    private void SpawnMovingEnemy()
+    {
+        for (int i = 0; i < spawnAmmount; i++)
+        {
+            int randNumber = Random.Range(0, spawnPoints.Count);
+            Instantiate(movingEnemy, spawnPoints[randNumber].position, spawnPoints[randNumber].rotation);
+            enemyList.Add(baseEnemy);
+        }
+        return;
+    }
+    private void SpawnFastMovingEnemy()
+    {
+        for (int i = 0; i < spawnAmmount; i++)
+        {
+            int randNumber = Random.Range(0, spawnPoints.Count);
+            Instantiate(fastMovingEnemy, spawnPoints[randNumber].position, spawnPoints[randNumber].rotation);
+            enemyList.Add(baseEnemy);
+        }
+        return;
+    }
+    private void SpawnShootingEnemy()
+    {
+        for (int i = 0; i < spawnAmmount; i++)
+        {
+            int randNumber = Random.Range(0, spawnPoints.Count);
+            Instantiate(shootingEnemy, spawnPoints[randNumber].position, spawnPoints[randNumber].rotation);
+            enemyList.Add(baseEnemy);
+        }
+        return;
+    }
+    private void SpawnDashingEnemy()
+    {
+        for (int i = 0; i < spawnAmmount; i++)
+        {
+            int randNumber = Random.Range(0, spawnPoints.Count);
+            Instantiate(dashingEnemy, spawnPoints[randNumber].position, spawnPoints[randNumber].rotation);
+            enemyList.Add(baseEnemy);
+        }
+        return;
+    }
 
+    //draws gizmos so that they can be seen in the editor
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -101,4 +121,5 @@ public class EnemySpawner : MonoBehaviour
             Gizmos.DrawWireSphere(t.position, 1f);
         }
     }
+
 }

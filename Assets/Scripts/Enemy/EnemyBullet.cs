@@ -26,8 +26,9 @@ public class EnemyBullet : Bullet
         {
             // Deal damage to the player
             player.TakeDamage();
+            Destroy(gameObject);
         }
         
-        Destroy(gameObject);
+        
     }
 }
