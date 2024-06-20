@@ -262,11 +262,11 @@ MonoBehaviour:
   - {fileID: 591487287}
   - {fileID: 272817736}
   - {fileID: 1386964143}
-  BaseEnemy: {fileID: 3566433008762328158, guid: e0f66b91b5fc96144b7b911441d38e8b, type: 3}
-  MovingEnemy: {fileID: 4836614901926553783, guid: 6f98d02258491cf4fbd06353bed9ac74, type: 3}
-  FastMovingEnemy: {fileID: 590321447444489101, guid: b5e8b9ad79e8c674f8232ed436701dec, type: 3}
-  ShootingEnemy: {fileID: 7259686564838270741, guid: 0c3e5be169d35a14bbb5b704ef1e7a39, type: 3}
-  DashingEnemy: {fileID: 2377428665283037860, guid: 6371ec6e343426e4fab138231d264378, type: 3}
+  baseEnemy: {fileID: 3566433008762328158, guid: e0f66b91b5fc96144b7b911441d38e8b, type: 3}
+  movingEnemy: {fileID: 4836614901926553783, guid: 6f98d02258491cf4fbd06353bed9ac74, type: 3}
+  fastMovingEnemy: {fileID: 590321447444489101, guid: b5e8b9ad79e8c674f8232ed436701dec, type: 3}
+  shootingEnemy: {fileID: 7259686564838270741, guid: 0c3e5be169d35a14bbb5b704ef1e7a39, type: 3}
+  dashingEnemy: {fileID: 2377428665283037860, guid: 6371ec6e343426e4fab138231d264378, type: 3}
 --- !u!1 &365262946
 GameObject:
   m_ObjectHideFlags: 0
