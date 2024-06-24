@@ -55,4 +55,5 @@ public class BaseEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

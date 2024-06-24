@@ -9,8 +9,6 @@ public class Bullet : MonoBehaviour
     // speed and damage of the bullet
     [SerializeField] private float speed = 10f;
     [SerializeField] private float damage = 10f;
-
-    private float timer;
     
     void Update()
     {

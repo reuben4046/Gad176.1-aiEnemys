@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class DashingEnemy : BaseEnemy
 {
+    //variables for the time it takes for the enemy to find or dash (used in the coroutine)
     private float findingTime = 1f;
-
-    private bool dashing = false;
-    private float dashSpeed = 8f;
+    private float dashingTime = 2f;
 
     private bool coroutineRunning = true;
-    private float dashingTime = 2f;
+
+    //variables for the dash
+    private bool dashing = false;
+    private float dashSpeed = 8f;
+   
+    
     
     // Start is called before the first frame update
     protected override void Start()
@@ -20,7 +24,7 @@ public class DashingEnemy : BaseEnemy
         StartCoroutine(DashCoroutine());
     }
 
-
+    // Coroutine that keeps looping changing the dashing variable from true to false
     IEnumerator DashCoroutine()
     {
         while (coroutineRunning)
@@ -29,7 +33,6 @@ public class DashingEnemy : BaseEnemy
             dashing = !dashing;
         }
     }
- 
 
     // Update is called once per frame
     void Update()
@@ -37,21 +40,20 @@ public class DashingEnemy : BaseEnemy
         FindOrDash();
     }
 
+    //function that calls base.RotateTowardsTarget() if the enemy is not dashing, otherwise it calls Dash()
     private void FindOrDash()
     {
         if (dashing == false)
         {
-            //Debug.Log("finding");
             base.RotateTowardsTarget();
         }
         else
         {
-            //Debug.Log("dashing");
             Dash();
         }
     }
 
-
+    //Dash function that moves the enemy forward while it is active
     private void Dash()
     {
         transform.Translate(Vector3.forward * dashSpeed * Time.deltaTime);

@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
-    Rigidbody body;
-
+    //run speed of the player (serialized so it can stay private but show up in the inspector)
     [SerializeField] private float runSpeed = 10.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        body = GetComponent<Rigidbody>();
-    }
 
-    // Update is called once per frame
+    // Update is called once per frame controls the inputs for player movement
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
@@ -37,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    //functions for moving the player
     void MoveForwards()
     {
         transform.position += Vector3.forward * runSpeed * Time.deltaTime;
@@ -57,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position += Vector3.right * runSpeed * Time.deltaTime;
     }
 
+    //function that deals damage to the player
     public void TakeDamage()
     {
         //Debug.Log("I took damage!");

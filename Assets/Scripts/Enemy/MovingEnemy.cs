@@ -5,6 +5,11 @@ using UnityEngine.Windows.Speech;
 
 public class MovingEnemy : BaseEnemy
 {
+
+    //variables for moving the enemy towards the player
+    protected float moveSpeed = 3f;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -12,8 +17,7 @@ public class MovingEnemy : BaseEnemy
         MoveTowardsPlayer();
     }
 
-    protected float moveSpeed = 1f;
-
+    //function that moves the enemy towards the player
     protected virtual void MoveTowardsPlayer()
     {
         var step = moveSpeed * Time.deltaTime;

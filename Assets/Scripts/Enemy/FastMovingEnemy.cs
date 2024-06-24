@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FastMovingEnemy : MovingEnemy
 {
+    //speed multiplier for the fast moving enemy makes it move 4x faster than the normal moving enemy
+    private float speedMultiplier = 2f;
 
     // Update is called once per frame
     void Update()
@@ -11,9 +13,8 @@ public class FastMovingEnemy : MovingEnemy
         RotateTowardsTarget();
         MoveTowardsPlayer();
     }
-
-    private float speedMultiplier = 4f;
-
+    
+    // Moves towards the player at a faster pace than the normal moving enemy
     protected override void MoveTowardsPlayer()
     {
         var step = moveSpeed * speedMultiplier * Time.deltaTime;
