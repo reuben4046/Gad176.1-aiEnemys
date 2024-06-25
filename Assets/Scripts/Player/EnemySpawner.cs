@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    
+    //Ui references
+    [SerializeField] private GameUi gameUi;
     //list of possible spawn points
     [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
 
@@ -30,16 +31,26 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
       WaveIncreaser();
-      Debug.Log(enemyList.Count);
+      //Debug.Log(enemyList.Count);
+    }
+
+    //function that sets the wave text to the current wave
+    private void SetWaveText()
+    {
+        gameUi.SetWaveText(waveNumber);
     }
 
     //function that increases the wave number
     private void WaveIncreaser()
     {
-        if (enemyList.Count == 0)
+        if (waveNumber < 5)
         {
-            waveNumber++;
-            SpawnController();
+            if (enemyList.Count == 0)
+            {
+                waveNumber++;
+                SpawnController();
+                SetWaveText();
+            }
         }
     }
 

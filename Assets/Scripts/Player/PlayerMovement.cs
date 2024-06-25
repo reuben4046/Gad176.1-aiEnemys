@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     //run speed of the player (serialized so it can stay private but show up in the inspector)
     [SerializeField] private float runSpeed = 10.0f;
 
+    //gameUi reference
+    public GameUi gameUi;
 
     // Update is called once per frame controls the inputs for player movement
     void Update()
@@ -54,7 +56,9 @@ public class PlayerMovement : MonoBehaviour
     //function that deals damage to the player
     public void TakeDamage()
     {
-        //Debug.Log("I took damage!");
+        gameUi.SetHealthSliderValue();
+
+        Debug.Log("player took damage");
     }
 
 }
