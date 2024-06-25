@@ -59,7 +59,7 @@ public class BaseEnemy : MonoBehaviour
     //function that deals damage to the player if the enemy collides with it
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")) //making sure that this is only called for the player and not the children of the player
         {
             PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
             if (player != null)
