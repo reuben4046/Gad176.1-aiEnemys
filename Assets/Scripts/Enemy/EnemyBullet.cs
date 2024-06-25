@@ -16,7 +16,7 @@ public class EnemyBullet : Bullet
         MoveBullet();
     }
 
-
+    //function that calls player TakeDamage() if the bullet collides with the player
     protected override void OnTriggerEnter(Collider other)
     {
         PlayerMovement player = other.gameObject.GetComponent<PlayerMovement>();
@@ -28,7 +28,5 @@ public class EnemyBullet : Bullet
             player.TakeDamage();
             Destroy(gameObject);
         }
-        
-        
     }
 }
