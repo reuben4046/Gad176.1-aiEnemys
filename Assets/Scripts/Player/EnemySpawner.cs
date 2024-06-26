@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
       WaveIncreaser();
-      //Debug.Log(enemyList.Count);
+      GameWin();
     }
 
     //function that sets the wave text to the current wave
@@ -78,6 +78,15 @@ public class EnemySpawner : MonoBehaviour
             SpawnMovingEnemy();
             SpawnFastMovingEnemy();
             SpawnShootingEnemy();
+        }
+    }
+
+    //function that ends the game if the player goes past wave 4
+    public void GameWin()
+    {
+        if (waveNumber > 4)
+        {
+            gameUi.GameWin();
         }
     }
 

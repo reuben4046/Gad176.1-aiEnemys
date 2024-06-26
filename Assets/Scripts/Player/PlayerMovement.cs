@@ -58,8 +58,19 @@ public class PlayerMovement : MonoBehaviour
     {
         gameUi.SetHealthSliderValue();
 
+        if (gameUi.SetHealthSliderValue() <= 0)
+        {
+            Destroy(gameObject);
+            gameUi.GameOver();
+        }
+
         Debug.Log("player took damage");
     }
+
+    
+
+
+
 
 }
     
