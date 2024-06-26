@@ -20,7 +20,10 @@ public class MovingEnemy : BaseEnemy
     //function that moves the enemy towards the player
     protected virtual void MoveTowardsPlayer()
     {
-        var step = moveSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+        if (player != null)
+        { 
+            var step = moveSpeed * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
+        }
     }
 }

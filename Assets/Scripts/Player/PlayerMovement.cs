@@ -33,22 +33,19 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //functions for moving the player
-    void MoveForwards()
+    private void MoveForwards()
     {
         transform.position += Vector3.forward * runSpeed * Time.deltaTime;
     }
-
-    void MoveBackwards()
+    private void MoveBackwards()
     {
         transform.position += Vector3.back * runSpeed * Time.deltaTime;
     }
-
-    void MoveLeft()
+    private void MoveLeft()
     {
         transform.position += Vector3.left * runSpeed * Time.deltaTime;
     }
-
-    void MoveRight()
+    private void MoveRight()
     {
         transform.position += Vector3.right * runSpeed * Time.deltaTime;
     }
@@ -58,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
         gameUi.SetHealthSliderValue();
 
-        if (gameUi.SetHealthSliderValue() <= 0)
+        if (gameUi.SetHealthSliderValue() <= 0) //if the health is less than or equal to 0 then destroy the player and display game over
         {
             Destroy(gameObject);
             gameUi.GameOver();
